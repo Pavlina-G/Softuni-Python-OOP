@@ -25,7 +25,8 @@ class Time:
 
     def get_time(self):
         return f"%02d:%02d:%02d" % (self.hours % 24, self.minutes % 60, self.seconds % 60)
-
+        # return f"{self.hours % 24:02d}:{self.minutes % 60:02d}:{self.seconds % 60:02d}"
+ 
     def next_second(self):
         self.set_time(self.hours, self.minutes, self.seconds + 1)
         return self.get_time()
