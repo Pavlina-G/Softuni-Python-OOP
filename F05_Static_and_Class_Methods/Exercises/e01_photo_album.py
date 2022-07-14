@@ -33,3 +33,16 @@ class PhotoAlbum:
         for _ in range(self.pages):
             result.append([] * self.PHOTOS_PER_PAGE)
         return result
+    
+    
+album = PhotoAlbum(2)
+
+print(album.add_photo("baby"))
+print(album.add_photo("first grade"))
+print(album.add_photo("eight grade"))
+print(album.add_photo("party with friends"))
+print(album.photos)
+print(album.add_photo("prom"))
+print(album.add_photo("wedding"))
+
+print(album.display())
