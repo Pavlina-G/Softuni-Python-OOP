@@ -32,12 +32,40 @@ class CustomList:
     def get(self, index):
         self.__validate_index(index)
         return self.__values[index]
-    
+
 # •	extend(iterable) - Appends the iterable to the list. Returns the new list.
+    def extend(self, values):
+        [self.append(v) for v in values]
+        return self
+
 # •	insert(index, value) - Adds the value on the specific index. Returns the list.
+    def insert(self, index, value):
+        self.__validate_index(index, min_index=-self.size() + 1, max_index=self.size() + 1)
+        self.__values.insert(index, value)
+
+        return self
+
 # •	pop() - Removes the last value and returns it.
+    def pop(self):
+        if not self.__values:
+            raise IndexError("pop from empty list")
+        return self.__values.pop()
+
+    def __str__(self):
+        return f"[{', '.join(str(x) for x in self.__values)}]"
+
 # •	clear() - Removes all values, contained in the list.
+
 # •	index(value) - Returns the index of the given value.
 # •	count(value) - Returns the number of times the value is contained in the list.
 # •	reverse() - Returns the values of the list in reverse order.
 # •	copy() - Returns a copy of the list.
+
+cl = CustomList()
+cl.append(1)
+cl.append(2)
+cl.append(3)
+print(cl)
+# cl.pop()
+cl.insert(5, 4)
+print(cl)
