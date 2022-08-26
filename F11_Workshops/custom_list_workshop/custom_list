@@ -1,0 +1,43 @@
+class CustomList:
+    def __init__(self):
+        self.__values = []
+
+# •	append(value) - Adds a value to the end of the list. Returns the list.
+
+    def append(self, value):
+        self.__values.append(value)
+        return self
+
+# •	remove(index) - Removes the value on the index. Returns the value removed.
+
+    def remove(self, index):
+        self.__validate_index(index)
+        return self.__values.pop(index)
+
+    def __validate_index(self, index, min_index=None, max_index=None):
+        if not min_index:
+            min_index = -self.size()
+        if not max_index:
+            max_index = self.size()
+        if not isinstance(index, int):
+            raise TypeError('Index should be an integer')
+
+        if index < min_index or max_index <= index:
+            raise IndexError('Index is out of range')
+
+    def size(self):
+        return len(self.__values)
+
+# •	get(index) - Returns the value on the index.
+    def get(self, index):
+        self.__validate_index(index)
+        return self.__values[index]
+    
+# •	extend(iterable) - Appends the iterable to the list. Returns the new list.
+# •	insert(index, value) - Adds the value on the specific index. Returns the list.
+# •	pop() - Removes the last value and returns it.
+# •	clear() - Removes all values, contained in the list.
+# •	index(value) - Returns the index of the given value.
+# •	count(value) - Returns the number of times the value is contained in the list.
+# •	reverse() - Returns the values of the list in reverse order.
+# •	copy() - Returns a copy of the list.
