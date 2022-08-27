@@ -55,11 +55,32 @@ class CustomList:
         return f"[{', '.join(str(x) for x in self.__values)}]"
 
 # •	clear() - Removes all values, contained in the list.
+    def clear(self):
+        self.__values.clear()
 
 # •	index(value) - Returns the index of the given value.
+    def index(self, value):
+        if value not in self.__values:
+            raise ValueError(f"{value} not in the list")
+        return self.__values.index(value)
+
 # •	count(value) - Returns the number of times the value is contained in the list.
+    def count(self, value):
+        return self.__values.count(value)
+
 # •	reverse() - Returns the values of the list in reverse order.
+    def reverse(self):
+        return self.__values[::-1]
+
 # •	copy() - Returns a copy of the list.
+    def copy(self):
+        return self.new_list(self.__values)
+
+    @classmethod
+    def new_list(cls, values):
+        ll = cls()
+        [ll.append(v) for v in values]
+        return ll
 
 cl = CustomList()
 cl.append(1)
@@ -67,5 +88,7 @@ cl.append(2)
 cl.append(3)
 print(cl)
 # cl.pop()
-cl.insert(5, 4)
+cl.insert(3, 4)
 print(cl)
+print(cl.reverse())
+print(cl.copy())
